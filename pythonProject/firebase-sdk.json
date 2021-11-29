@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "corona-ball-game-11",
+  "private_key_id": "da4022db73587ef70d29e58563964c130a88ffb7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDT4Pt2i6WUudLW\nxezY/zf9rp6HFRMiGSEI7AAMbRl+376um2aHq0O2cJcH+biMgGmnygGMlZouaKf6\nkcY91wQblku0zUC8ewoH1dtX7jyE1yvxiQIuHEvveG8nyEGjs8j3Wa4SVxoLZY+5\nfyfSxnzSn/+1IQUNC5r6gdPv1NoXYRD9mlskCtHa9sGkb8NxOMlBuuVl7d6JtItB\nDLpJ+OwlYSsOVu2apaHk7jXqPGntZ9aVv9juMEVrt7JJvazLcXiHt9BO1/ca/FuD\nEOM1xJ+aCbfOSr4/R4Aa53AQRD9C6Cng4D8eN1udsU0Xe7OIwmARGIunWxHpoVgf\ngojCMvj5AgMBAAECggEACGw06t89x5YEfuOy2OR6aBQBOsr4bf5UPRvOm6/Zl9zS\nonPMhV+mSzIaGufPMYyoRpKF8b3/uVERPml9mTc7M1KL82XGaUe13B5hABOZJcm8\n9jbVVppq3VvrBUiVbWnH9ydCP3nlb+cLadsXbO5Vh3TzUBK+NejMciFnmKzcN5oi\nbUarh42ttFi0dSJ9vcDWpQ49NvDKWBtFvS9zVSde9HsBLlu9/oHXF/YKFcKiSRT8\noBGIFNRR28O8TsMWEh9Awj4YTyN1ShenKw/6lQkKqW6f83i9MceXCS+ZO01TXsCE\nfy+VwfzhXmDVm7cnf4KLQ75hT+V9ell8mDGZ77eT9QKBgQD1ZROfjJexGVjkOlVM\nJ2ViZxr+3iaCtldZ9INFCUV5bU3Byry2AwtXaol1SH0ktiZxdsx95AWsdQxW9Uah\nmXBQl7L1wDOsmdiaVlRzB2Bca+cKQSJ6D2uuP7Phvcn/FTKuyq0ihNC4r4aMS1BF\nyrrE/Gki0nSdY6s+v6p0B7dINQKBgQDdCRoMXdKQszriUZ3IQftB6t++t1ZtJ5ax\nEdrw4c7UCeiNdoKfugLVPsJkh6MD5haB4cp87fl/IvoO9IWBPO3VnjqyZM32MJHO\n6RFGMmiEeogMPjVxHa02R1Olnsw7/qbji4SNhV3B+wtJIfoHzYCEIfYH1+RhIc9j\nkePPhRmuNQKBgFpkkjbqZhJBgQIJDtSPioQV8NbDZDIwErs7G4O5p5LUFZl2Ic92\nDZ50yw+d1SNJyZ1wImGZNhHRx+rcTNlIGRxG1RA7bY192lD3zgHVTMSepqubVKTb\nu1Gje5KDA75nw5Spad9WR0BQv+I79+TNicD4LY47MeOsDC+AELzO/s+lAoGBAL6o\nZTGZlFGAaCBjqifc0i/vuwO0/PW2mkMuVZ5GCLPZwCCVwuKn/l2WfvNcE/7+7xcl\nfhX456cEspFH1gi+V6BVleffD9F136+MVnwoawMq9kMpPcvOf2Q8biiEK0Lsy2On\nKrUv/smeFAQHLLaiSmKvMJtfW/10voDyjICqHJapAoGBANrxdJAyyTYrnkWSyzJX\nYRQCIIKrfVGlBrKCTw+y+o9hKjYhiGZ1N9vsMiPTjrKg1FkituZ/NAGV7jjQT/Zy\nx7V7rYtoihqIjrxYzATnDbeUvoDNlRvw5gd5UpjwxC/QTCj6eTr81OhT9tcMaN2P\nYDa8Gur4f731fnq3Ipv73CFQ\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-smvqm@corona-ball-game-11.iam.gserviceaccount.com",
+  "client_id": "116375446840798820468",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-smvqm%40corona-ball-game-11.iam.gserviceaccount.com"
+}
