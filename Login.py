@@ -7,27 +7,28 @@ from firebase_admin import db
 from tkinter import *
 import tkinter as tk
 from firebase_admin import credentials
-
-cred_obj = firebase_admin.credentials.Certificate('firebase-sdk.json')
+cred_obj = firebase_admin.credentials.Certificate('f.json')
 default_app = firebase_admin.initialize_app(cred_obj, {
     'databaseURL': 'https://coronagame-151a7-default-rtdb.firebaseio.com'
 })
+#firebase_admin.initialize_app(cred_obj)
 
 
 # Login function
 
-def login():
-    print("Log in...")
-    email = input("Enter email: ")
-    password = input("Enter password: ")
-    try:
-        login = auth.sign_in_with_email_and_password(email, password)
-        print("Successfully logged in!")
+def login(email=None, password=None):
+    if email is not None and password is not None:
+        print("Log in...")
+        email = input("Enter email: ")
+        password = input("Enter password: ")
+    #try:
+    login = auth.generate_sign_in_with_email_link(email=email, action_code_settings='') #, password=password)
+    print("Successfully logged in!")
         # print(auth.get_account_info(login['idToken']))
     # email = auth.get_account_info(login['idToken'])['users'][0]['email']
     # print(email)
-    except:
-        print("Invalid email or password")
+    #except:
+    #    print("Invalid email or password")
     return
 
 
@@ -38,19 +39,20 @@ def signup():
     email = input("Enter email: ")
     password = input("Enter password: ")
     try:
-        user = auth.create_user_with_email_and_password(email, password)
-        ask = input("Do you want to login?[y/n]")
-        if ask == 'y':
-            login()
+        user = auth.create_user(email=email, password=password)
     except:
         print("Email already exists")
+        return
+    ask = input("Do you want to login?[y/n]")
+    if ask == 'y':
+        login()
     return
 
 
 def fu():
     ref = db.reference("/Users")
     users = ref.get()
-
+    print(users)
 
 # Main
 def main_screen():
