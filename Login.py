@@ -1,3 +1,5 @@
+import os
+
 import firebase_admin
 from firebase_admin import credentials
 import firebase_admin
@@ -38,23 +40,48 @@ firebase = pyrebase.initialize_app(firebaseConfig)
 def login(email=None, password=None):
     # if email is not None and password is not None:
     print("Log in...")
-    email = input("Enter email: ")
-    password = input("Enter password: ")
-    # try:
-    # login = auth.generate_sign_in_with_email_link(email=email, action_code_settings='') #, password=password)
-    auth = firebase.auth()
-    user = auth.sign_in_with_email_and_password(email, password)
-    if user is not None:
-        print("Successfully logged in!")
-        print("type = " + user['displayName'])
+    if email is not None and password is not None:
+        auth = firebase.auth()
+        user = auth.sign_in_with_email_and_password(email, password)
+        first_char = email[0]
+        second_char = email[1]
+        if user is not None:
+           if first_char == 'a' and second_char == '_':
+                 import Admin_game.py
+           elif first_char == 'u' and second_char == '_':
+                 import User_game.py
+           elif first_char == 's' and second_char == '_':
+                 import Static_game.py
+           else:
+                 print("Error")
+           return
+        #print("Fail to login!")
+        #return
+    #
+    frame = tk.Tk()
+    frame.title("Login Info")
+    frame.geometry('400x400')
 
-    # print(auth.get_account_info(login['idToken']))
-    # email = auth.get_account_info(login['idToken'])['users'][0]['email']
-    # print(email)
-    # except:
-    #    print("Invalid email or password")
-    return
+    name = Label(frame, text="email: ")
+    name.pack()
+    namevalue = StringVar
+    nameentry = Entry(frame, textvariable=namevalue)
+    nameentry.pack()
 
+    password = Label(frame, text="passowrd: ")
+    password.pack()
+    passvalue = StringVar
+    passentry = Entry(frame, textvariable=passvalue)
+    passentry.pack()
+
+    # Submit Button
+    Label(text="").pack()
+    Button(frame, text="submit", command=lambda: login(nameentry.get(), passentry.get())).pack()
+
+    # Back Button
+    Label(text="").pack()
+    button = tk.Button(frame, text='Back', command=lambda: frame.destroy())
+    button.pack()
 
 def SignUpInfo():
     frame = tk.Tk()
@@ -82,6 +109,13 @@ def SignUpInfo():
     button = tk.Button(frame, text='Back', command=lambda: frame.destroy())
     button.pack()
 
+    noticeUser = Label(frame, text="User select: = u_ ")
+    noticeUser.pack()
+    noticeAdmin = Label(frame, text="Admin select: = a_ ")
+    noticeAdmin.pack()
+    noticeStatistician = Label(frame, text="Statistician select: = s_ ")
+    noticeStatistician.pack()
+
     return namevalue, passvalue
     frame.mainloop()
 
@@ -90,23 +124,32 @@ def SignUpInfo():
 
 def signup(email, password):
     print("Sign up...")
-    # print(email.get())
-    # print(password.get())
-    try:
-        type = int(input("enter type:\n1-Regular\n2-Statistics\n3-Admin\n"))
-        try:
-            user = auth.create_user(email=email.get(), password=password.get(), display_name=str(type))
-            userData = {
-                u'email': email.get(),
-                u'password': password.get(),
-                u'type': type
-            }
+    print(email.get())
+    print(password.get())
+#    first_char = email.get()[0]
+#    second_char = email.get()[1]
+#    if first_char == 'a' and second_char == '_':
+#        print("admin")
+#    elif first_char == 'u' and second_char == '_':
+#        print("user")
+#    elif first_char == 's' and second_char == '_':
+#        print("statistician")
+#    else:
+#        print("Error")
 
-            db = fs.client()
-            # Add a new doc in collection 'users' with ID 'email'
-            db.collection(u'Users').document(email.get()).set(userData)
-        except Exception as e:
-            pass
+    try:
+        user = auth.create_user(email=email.get(), password=password.get(), display_name=str(type))
+        userData = {
+        u'email': email.get(),
+        u'password': password.get(),
+        u'type': type
+        }
+
+        db = fs.client()
+        # Add a new doc in collection 'users' with ID 'email'
+        db.collection(u'Users').document(email.get()).set(userData)
+    except Exception as e:
+        pass
     except:
         print("Email already exists")
         return
@@ -115,18 +158,10 @@ def signup(email, password):
     frame.geometry('400x400')
     name = Label(frame, text="Do you want to login? ")
     name.pack()
-    button = tk.Button(frame, text='Yes', command=login)
+    button = tk.Button(frame, text='Yes', command=lambda: login(email.get(), password.get()))
     button.pack()
     button = tk.Button(frame, text='No', command=lambda: frame.destroy())
     button.pack()
-
-    '''
-    ask = input("Do you want to login?[y/n]")
-    if ask == 'y':
-        login()
-    return
-    '''
-
 
 def fu():
     ref = db.reference("/Users")
@@ -138,7 +173,7 @@ def fu():
 def main_screen():
     screen = Tk()
     screen.geometry("600x600")
-    screen.title("Game Start")
+    screen.title("Login")
     Label(text="Game Start", bg="grey", font=("calibri", 13)).pack()
     Label(text="").pack()
     Button(screen, text="Login", command=login).pack()
@@ -153,10 +188,3 @@ def main_screen():
 
 
 main_screen()
-
-# ans=input("Are you a new user?[y/n]")
-
-'''if ans == 'n':
-    login()
-elif ans == 'y':
-    signup()'''
