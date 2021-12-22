@@ -2,6 +2,7 @@ import pygame, sys
 import random
 import time
 
+
 pygame.init()
 
 # Colors
@@ -21,6 +22,10 @@ balls = []
 mouseClick_x = 0
 mouseClick_y = 0
 points = 0
+
+my_font = pygame.font.SysFont("Arial", 20)
+
+
 
 class Circle():
     def __init__(self, x_cord, y_cord, x_vel, y_vel):
@@ -86,7 +91,6 @@ def mousecheck(array_balls):
                 points += 1
                 print(points)
 
-
 def game():
     balls.append(Circle(random.randint(100, 1350), random.randint(50, 1000), 4, 4))
     balls[0].player_color = corona
@@ -94,15 +98,18 @@ def game():
     balls[1].player_color = healer
     for i in range(25):
         balls.append(
-            Circle(random.randint(150, 1350), random.randint(50, 1000), random.randint(-4, 4), random.randint(-4, 4)))
+            Circle(random.randint(150, 1350), random.randint(150, 1000), random.randint(-4, 4)+1, random.randint(-4, 4)+1))
 
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            if event.type == pygame.MOUSEBUTTONUP:
+            elif event.type == pygame.MOUSEBUTTONUP:
                 mousecheck(balls)
         screen.fill(white)
+
+        screen.blit(my_font.render(str(points), True, black), (10, 10))
+
         colide(balls)
         [Circle.bouncing_rect() for Circle in balls]
         [Circle.update() for Circle in balls]
