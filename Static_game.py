@@ -2,6 +2,7 @@ import pygame, sys
 import random
 import time
 
+
 pygame.init()
 
 # Colors
@@ -13,7 +14,7 @@ blue = (0, 0, 255)
 corona = (150, 0, 0)
 healer = (0, 255, 255)
 clock = pygame.time.Clock()
-display_width, display_height = 1500, 1100
+display_width, display_height = 1300, 800
 screen = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption("Statistician game")
 screen.fill(white)
@@ -21,6 +22,10 @@ balls = []
 mouseClick_x = 0
 mouseClick_y = 0
 points = 0
+
+my_font = pygame.font.SysFont("Arial", 20)
+
+
 
 class Circle():
     def __init__(self, x_cord, y_cord, x_vel, y_vel):
@@ -40,13 +45,13 @@ class Circle():
         self.player_pos_y += self.speed_y
 
     def bouncing_rect(self):
-        if self.player_pos_x < 20:
+        if self.player_pos_x < 100:
             self.speed_x *= -1
-        if self.player_pos_x > 1500:
+        if self.player_pos_x > 1285:
             self.speed_x *= -1
-        if self.player_pos_y < 10:
+        if self.player_pos_y < 15:
             self.speed_y *= -1
-        if self.player_pos_y > 1050:
+        if self.player_pos_y > 789:
             self.speed_y *= -1
 
 
@@ -86,23 +91,25 @@ def mousecheck(array_balls):
                 points += 1
                 print(points)
 
-
 def game():
-    balls.append(Circle(random.randint(100, 1350), random.randint(50, 1000), 4, 4))
+    balls.append(Circle(random.randint(100, 1150), random.randint(50, 650), 4, 4))
     balls[0].player_color = corona
-    balls.append(Circle(random.randint(100, 1350), random.randint(50, 1000), 4, 4))
+    balls.append(Circle(random.randint(100, 1150), random.randint(50, 650), 4, 4))
     balls[1].player_color = healer
     for i in range(25):
         balls.append(
-            Circle(random.randint(150, 1350), random.randint(50, 1000), random.randint(-4, 4), random.randint(-4, 4)))
+            Circle(random.randint(150, 1150), random.randint(150, 600), random.randint(-4, 4)+1, random.randint(-4, 4)+1))
 
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            if event.type == pygame.MOUSEBUTTONUP:
+            elif event.type == pygame.MOUSEBUTTONUP:
                 mousecheck(balls)
         screen.fill(white)
+
+        screen.blit(my_font.render(str(points), True, black), (10, 10))
+
         colide(balls)
         [Circle.bouncing_rect() for Circle in balls]
         [Circle.update() for Circle in balls]

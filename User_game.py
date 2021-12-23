@@ -13,7 +13,7 @@ blue = (0, 0, 255)
 corona = (150, 0, 0)
 healer = (0, 255, 255)
 clock = pygame.time.Clock()
-display_width, display_height = 1500, 1100
+display_width, display_height = 1300, 800
 screen = pygame.display.set_mode((display_width, display_height))
 pygame.display.set_caption("User game")
 screen.fill(white)
@@ -40,13 +40,13 @@ class Circle():
         self.player_pos_y += self.speed_y
 
     def bouncing_rect(self):
-        if self.player_pos_x < 20:
+        if self.player_pos_x < 100:
             self.speed_x *= -1
-        if self.player_pos_x > 1500:
+        if self.player_pos_x > 1285:
             self.speed_x *= -1
-        if self.player_pos_y < 10:
+        if self.player_pos_y < 15:
             self.speed_y *= -1
-        if self.player_pos_y > 1050:
+        if self.player_pos_y > 789:
             self.speed_y *= -1
 
 
@@ -89,13 +89,13 @@ def mousecheck(array_balls):
 
 def game():
 
-    balls.append(Circle(random.randint(100, 1350), random.randint(50, 1000), 4, 4))
+    balls.append(Circle(random.randint(100, 1150), random.randint(50, 650), 4, 4))
     balls[0].player_color = corona
-    balls.append(Circle(random.randint(100, 1350), random.randint(50, 1000), 4, 4))
+    balls.append(Circle(random.randint(100, 1150), random.randint(50, 650), 4, 4))
     balls[1].player_color = healer
     for i in range(25):
         balls.append(
-            Circle(random.randint(150, 1350), random.randint(50, 1000), random.randint(-4, 4), random.randint(-4, 4)))
+            Circle(random.randint(150, 1150), random.randint(50, 650), random.randint(-4, 4), random.randint(-4, 4)))
 
     while True:
         for event in pygame.event.get():
