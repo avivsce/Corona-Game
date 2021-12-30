@@ -50,7 +50,7 @@ class Circle():
             self.player_pos_x -= self.speed_x
             self.player_pos_y += self.speed_y
             return
-        if stopcounter < 1300 * 5:
+        if stopcounter < 1300 * 6:
             stopcounter += 1
             return
         stopcounter = 0

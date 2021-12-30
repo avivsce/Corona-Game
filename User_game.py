@@ -1,7 +1,7 @@
 import pygame, sys
 import random
 import time
-
+import math
 
 pygame.init()
 
@@ -62,6 +62,17 @@ class Circle():
             self.player_pos_y += self.speed_y
         return
 
+def bomb(balls):
+    global points
+    a=100
+    x,y = random.randint(100,1100),random.randint(100,689)
+    for i in range(len(balls)):
+        if x-a/2< balls[i].player_pos_x < x+a/2 and y-a/2< balls[i].player_pos_y < y+a/2:
+            if balls[i].player_color == red:
+                balls[i].player_color = blue
+                points +=1
+
+
 
 def colide(array_balls):
     for i in range(len(array_balls)):
@@ -112,11 +123,10 @@ def endgame(balls):
         textReStart = my_font.render('New Game',True,black)
         screen.blit(textReStart,(600,430))
         if 450<=mouseClick_x<=650 and 350<= mouseClick_y<=550:
-            resetgame(balls)    
+            resetgame(balls)
 
 
 def resetgame(balls):
-    print("we here")
     global points
     global stopflag
     for i in range(1,len(balls)):
@@ -132,18 +142,23 @@ def game():
     for i in range(25):
         balls.append(Circle(random.randint(150, 1100) - random.randint(10, 20),random.randint(150, 600) + random.randint(10, 20), random.randint(-4, 4) + 1,random.randint(-4, 4) + 1))
     textmoney = my_font.render('your money:', True, black)
+    textBomb = my_font.render('Bomb', True, red)
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
             if event.type == pygame.MOUSEBUTTONUP:
                 mousecheck(balls)
+                if 1200<=mouseClick_x<=1300 and 20<= mouseClick_y<=60:
+                    bomb(balls)
 
         screen.fill(white)
         #screen.blit(label,(500,500))
         screen.blit(textmoney, (10, 20))
 
         screen.blit(my_font.render(str(points), True, black), (130, 20))
+        screen.blit(textBomb, (1220, 40))
+
         endgame(balls)
 
         colide(balls)

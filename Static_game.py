@@ -68,6 +68,7 @@ class Circle():
             self.speed_y *= -1
 
 
+
 def colide(array_balls):
     global blueCount
     for i in range(len(array_balls)):
@@ -126,6 +127,8 @@ def game():
     textExplanation = my_font.render('To freeze the screen for 5 seconds, press S - Each use dropped 5 points', True, black)
     textAccurecy = my_font.render('Accurecy:', True, black)
 
+    Clock = pygame.time.Clock()
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -154,6 +157,7 @@ def game():
         screen.blit(my_font.render(str(temp), True, black), (100, 80))
 
         screen.blit(textExplanation, (10, 110))
+
 
 
 
