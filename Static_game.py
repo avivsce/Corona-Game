@@ -25,6 +25,7 @@ points = 0
 totalClicks = 0
 mouseHit = 0
 stopflag = True
+stopflag2 = True
 stopcounter = 0
 blueCount = 0
 temp = 0
@@ -138,6 +139,7 @@ def endgame(balls):
     count = 0
     global timer
     global stopflag
+    global stopflag2
     for i in range(len(balls)):
         if balls[i].player_color == red:
             count += 1
@@ -150,6 +152,14 @@ def endgame(balls):
         screen.blit(textReStart, (600, 430))
         if 450 <= mouseClick_x <= 650 and 350 <= mouseClick_y <= 550:
             resetgame(balls)
+
+        if stopflag2:
+            Static_game = open("static_status_game", "+a")
+            Static_game.write('points:{}'.format(points))
+            Static_game.write(', blue count:{}'.format(blueCount))
+            Static_game.write('\n'.format())
+            Static_game.close()
+            stopflag2 = False
 
 def resetgame(balls):
     global sec
