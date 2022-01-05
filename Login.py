@@ -10,6 +10,7 @@ from tkinter import *
 import tkinter as tk
 from firebase_admin import credentials
 from pyrebase import pyrebase
+from tkinter import ttk
 
 cred_obj = firebase_admin.credentials.Certificate('f.json')
 # cred_obj = credentials.Certificate('f.json')
@@ -172,15 +173,27 @@ def fu():
 # Main
 def main_screen():
     screen = Tk()
-    screen.geometry("600x600")
+    frame_header = ttk.Frame(screen)
+    frame_header.pack()
+    screen.geometry("300x300")
     screen.title("Login")
-    Label(text="Game Start", bg="grey", font=("calibri", 13)).pack()
-    Label(text="").pack()
+
+    headerlabel = ttk.Label(frame_header, text='Login & Register', foreground='red',font=('calibri', 30)).pack()
+    #headerlabel.grid(row=0, column=1)
+
+    #Label(text="Game Start", bg="grey", font=("calibri", 13)).pack()
+    #Label(text="").pack()
+    Label(text = " "
+                 " "
+                 " "
+                 " "
+                 " "
+                 " "
+                 " "
+                 " ",font=("calibri", 13)).pack()
     Button(screen, text="Login", command=login).pack()
     Label(text="").pack()
     Button(screen, text="Register", command=SignUpInfo).pack()
-    Label(text="").pack()
-    Button(screen, text="Start").pack()
     Label(text="").pack()
     button = tk.Button(screen, text='EXIT', command=lambda: screen.destroy())
     button.pack()
